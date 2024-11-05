@@ -1,0 +1,1 @@
+# This file gets read by people that look at the surrounding code on github. It's nice to have to explain why you posted your code to Github in the first place
