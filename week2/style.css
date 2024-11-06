@@ -1,14 +1,14 @@
-.body {
+body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
-    color: gray;
+    background-color: aqua;
+    color: darkslategray;
 }
 
 header {
     background-color: aqua;
-    color: gray;
+    color: darkslategray;
     padding: 20px;
     text-align: center;
 }
