@@ -1,0 +1,155 @@
+*{
+    margin: 5px;
+    padding: 1.5px;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f9;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: lower-latin;
+    background: #333;
+    padding: 10px;
+    justify-content: unset;
+  }
+  
+  nav ul li {
+    margin-right: 20px;
+  }
+  
+  nav ul li a {
+    color: #f4f4f4;
+    padding: 5px 10px;
+  }
+  
+  nav ul li a:hover {
+    background-color: #555;
+  }
+  
+  current-page {
+    color: #82c026;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: #f4f4f4;
+  }
+  
+  footer img {
+    margin-top: 10px;
+    max-width: 50px;
+    height: auto;
+  }
+  .main-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px;
+    width: 70%;
+  }
+  
+  .side-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 30%;
+    margin: 20px;
+  }
+  @media (max-width: 768px) {
+    .main-section, .side-section {
+      width: 100%;
+    }
+  
+    .side-section {
+      margin-top: 20px;
+    }
+  }
+  .sub-section {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    transition: 0.2s ease-in-out;
+  }
+  .sub-section:hover:hover {
+    transform: scale(1.05);
+  }
+  .side-menu {
+    position: fixed;
+    width: 200px;
+    background: #333;
+    padding: 10px;
+  }
+  
+  .side-menu a {
+    display: block;
+    padding: 8px;
+    color: #f4f4f4;
+  }
+  
+  .side-menu a:hover {
+    background-color: #555;
+  }
+  .item {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    transition: transform 0.3s;
+    text-align: center;
+  }
+  
+  .item:hover img {
+    transform: scale(1.1);
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 80%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  input, textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    align-self: flex-end;
+    padding: 10px 20px;
+    border: none;
+    background-color: #333;
+    color: #f4f4f4;
+    cursor: pointer;
+    transition: background-color  0.3s;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+  @media (max-width: 576px) {
+    .main-section, .side-section {
+      flex-direction: column;
+      width: 100%;
+    }
+  }

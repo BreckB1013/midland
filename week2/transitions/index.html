@@ -1,0 +1,135 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fictictious Company</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>*{
+      margin: 10px;
+      padding:2.5px;
+      box-sizing: content-box;
+    }
+    
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: darkkhaki;
+      line-height: 1.6;
+    }
+    
+    
+    nav {
+      background-color: cadetblue;
+      padding: 15px;
+      box-shadow: none;
+      
+    }
+    
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+    }
+    
+    nav ul li {
+      margin: 0 15px;
+    }
+    
+    nav ul li a {
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease-in-out;
+    }
+    
+    nav ul li a:hover {
+      background-color: darkgoldenrod;
+    }
+    
+   
+    .main-section, .side-section {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 1200px;
+    }
+    
+    .main-section {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
+    
+    .side-section {
+      flex-direction: column;
+      max-width: 300px;
+      padding: 20px;
+      background-color: #f0f4f8;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+  
+    .sub-section {
+      background-color: cadetblue;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      flex: 1;
+      min-width: 200px;
+      max-width: 250px;
+    }
+    
+    .sub-section:hover {
+      transform: translateY(-5px);
+    }
+    
+  
+    footer {
+      background-color: cadetblue;
+      color: #f9f9f9;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+    
+    footer p {
+      margin: 0;
+    }
+    
+    
+    
+    @media (max-width: 768px) {
+      .main-section, .side-section {
+        flex-direction: column;
+        align-items: center;
+      }
+    }</style>
+</head>
+<body>
+    <nav>
+        <ul>
+          <li><a href="index.html" class="current-page">Home</a></li>
+          <li><a href="items.html">Items for Sale</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <main class="main-section">
+        <div class="sub-section">Fake Content</div>
+        <div class="sub-section">Lies</div>
+        <div class="sub-section">Not Non-Fiction</div> 
+        </main>
+        
+        <aside class="side-section">
+            <div class="sub-section">F.A.K.E</div>
+            <div class="sub-section">F.I.B</div>
+        </aside>
+
+        <footer>
+            <p>Fictictious Company 2024</p>
+            <img src="images/fic.png" alt="Fictictious">
+        </footer>
+</body>
+</html>
