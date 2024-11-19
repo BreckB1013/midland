@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fictictious Company</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>*{
+   <style>*{
       margin: 10px;
       padding:2.5px;
       box-sizing: content-box;
@@ -12,13 +12,13 @@
     
     body {
       font-family: 'Arial', sans-serif;
-      background-color: darkkhaki;
+      background-color: bisque;
       line-height: 1.6;
     }
     
     
     nav {
-      background-color: cadetblue;
+      background-color: lightcoral ;
       padding: 15px;
       box-shadow: none;
       
@@ -35,7 +35,7 @@
     }
     
     nav ul li a {
-      color: #fff;
+      color: white;
       padding: 8px 12px;
       border-radius: 5px;
       transition: background-color 0.3s ease-in-out;
@@ -45,8 +45,7 @@
       background-color: darkgray;
     }
     
-   
-    main-section, .side-section {
+   .main-section, .side-section {
       display: flex;
       gap: 20px;
       padding: 20px;
@@ -54,7 +53,7 @@
       max-width: 1200px;
     }
     
-    main-section {
+    .main-section {
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: space-evenly;
@@ -66,12 +65,12 @@
       padding: 20px;
       background-color: #f0f4f8;
       border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 8px (0, 0, 0, 0.1);
     }
     
   
     .sub-section {
-      background-color: cadetblue;
+      background-color: lightcoral;
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -88,7 +87,7 @@
     
   
     footer {
-      background-color: cadetblue;
+      background-color: lightcoral;
       color: #f9f9f9;
       text-align: center;
       padding: 20px;
@@ -102,12 +101,13 @@
     
     
     @media (max-width: 768px) {
-      main-section, .side-section {
+      .main-section, .side-section {
         flex-direction: column;
         align-items: center;
       }
     }</style>
-</head>
+
+  </head>
 <body>
     <nav>
         <ul>
@@ -117,19 +117,19 @@
         </ul>
       </nav>
       <main class="main-section">
-        <div class="sub-section">Fake Content</div>
-        <div class="sub-section">Lies</div>
-        <div class="sub-section">Not Non-Fiction</div> 
+        <div class="sub-section">Fake Item Section 1</div>
+        <div class="sub-section">More Fake Things</div>
+        <div class="sub-section">The Fakest of Them All</div> 
         </main>
         
         <aside class="side-section">
-            <div class="sub-section">F.A.K.E</div>
-            <div class="sub-section">F.I.B</div>
+            <div class="sub-section">Best Sellers</div>
+            <div class="sub-section">On Sale</div>
         </aside>
 
         <footer>
             <p>Fictictious Company 2024</p>
-            <img src="images/fic.png" alt="Fictictious">
+            <img src="images/fic.png" alt="generic-company">
         </footer>
 </body>
 </html>
