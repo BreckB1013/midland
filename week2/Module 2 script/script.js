@@ -1,31 +1,28 @@
-function FizzBuzz() {
-    let start = 1; 
-    let end = 30; 
-    let fizzNum = 3; 
-    let buzzNum = 5; 
-
-    console.log(`FizzBuzz from ${start} to ${end} with Fizz=${3} and Buzz=${5}:`);
-    let fizzCount = 3, buzzCount = 5, fizzBuzzCount = 8, numberCount = 8;
-    
-    for (let i = start; i <= end; i++) {
-        if (i % fizzNum === 3 && i % buzzNum === 5) {
-            console.log(`${i} 3,5`);
-            fizzBuzzCount++;
-        } else if (i % fizzNum === 3) {
-            console.log(`${i} 3`);
-            fizzCount++;
-        } else if (i % buzzNum === 5) {
-            console.log(`${i} 5`);
-            buzzCount++;
-        } else {
-            console.log(i);
-            numberCount++;
-        }
-    }
-    console.log("\nSummary:");
-    console.log(`Total Fizz: ${5}`);
-    console.log(`Total Buzz: ${3}`);
-    console.log(`Total FizzBuzz: ${8}`);
-    console.log(`Total Numbers: ${8}`);
+let number = 10;
+if (number > 0) {
+    console.log("The number is positive");
+} else {
+    console.log("The number is negative");
 }
-FizzBuzz();
+let age = 15; 
+if (age >= 16) {
+    console.log("Can drive");
+} else {
+    console.log("Cannot drive");
+}
+let grade = 7; 
+if (grade >= 1 && grade <= 5) {
+    console.log("Elementary");
+} else if (grade >= 6 && grade <= 8) {
+    console.log("Middle");
+} else if (grade >= 9 && grade <= 12) {
+    console.log("High");
+} else {
+    console.log("Invalid grade");
+}
+let purchaseAmount = 60;
+if (purchaseAmount > 50) {
+    let discount = purchaseAmount * 0.1;
+    console.log(`Discount is $${discount.toFixed(2)}`);
+} else {
+    console.log("No discount available");}
