@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Quiz</title>
+</head>
+<body>
+  <div id="quiz-container">
+    <h1>Sports Quiz</h1>
+    <p id="question"></p>
+    <div id="answers"></div>
+    <p id="result"></p>
+    <button id="restart">Restart Quiz</button>
+  </div>
+  <script>const questions = [
+    {
+      question: "Who are the reigning Superbowl champions?",
+      answers: ["49ers", "Ravens", "Chiefs", "Lions"],
+      correct: 2 
+    },
+    {
+      question: "Who are the reigning NBA champions?",
+      answers: ["Warriors", "Lakers", "Celtics", "Mavericks"],
+      correct: 2 
+    },
+    {
+      question: "Who are the reigning World Series champions?",
+      answers: ["Phillies", "Red Sox", "Yankees", "Dodgers"],
+      correct: 3 
+    }
+  ];
+  
+  let currentQuestionIndex = 0;
+  let score = 0;
+  
+  const questionElement = document.getElementById("question");
+  const answersElement = document.getElementById("answers");
+  const resultElement = document.getElementById("result");
+  const restartButton = document.getElementById("restart");
+  
+  function loadQuestion() {
+    if (currentQuestionIndex >= questions.length) {
+      showResults();
+      return;
+    }
+  
+    const currentQuestion = questions[currentQuestionIndex];
+    questionElement.textContent = currentQuestion.question;
+  
+    answersElement.innerHTML = ""; 
+    currentQuestion.answers.forEach((answer, index) => {
+      const button = document.createElement("button");
+      button.textContent = answer;
+      button.onclick = () => handleAnswer(index);
+      answersElement.appendChild(button);
+    });
+  }
+  
+  function handleAnswer(selectedIndex) {
+    const currentQuestion = questions[currentQuestionIndex];
+  
+    if (selectedIndex === currentQuestion.correct) {
+      score++;
+    }
+  
+    currentQuestionIndex++;
+    loadQuestion();
+  }
+  
+  function showResults() {
+    questionElement.textContent = "Quiz Complete!";
+    answersElement.innerHTML = ""; 
+    resultElement.textContent = `You scored ${score} out of ${questions.length}.`;
+    restartButton.style.display = "block"; 
+  }
+  
+  restartButton.onclick = () => {
+    currentQuestionIndex = 0;
+    score = 0;
+    resultElement.textContent = "";
+    restartButton.style.display = "none";
+    loadQuestion(); 
+  };
+  
+  loadQuestion();</script>
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  #quiz-container {
+    background: rgb(74, 215, 105);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+  }
+  #answers button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 80%;
+    border: 1px solid greenyellow;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #answers button:hover {
+    background-color: coral;
+  }
+  #result {
+    font-size: 1.2rem;
+    margin-top: 20px;
+  }
+  #restart {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background: #2f2fde;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #restart:hover {
+    background: #c41818;
+  }
+  @media screen and (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+  #quiz-container {
+    width: 100%;
+  }
+  #answers button {
+    width: 100%;
+  }
+}
+h1 {
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+#answers {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media screen and (min-width: 600px) {
+  #answers {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+button {
+  padding: 12px 16px;
+  font-size: 16px;
+  margin: 5px;
+}
+  </style>
+</body>
+</html>
