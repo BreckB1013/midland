@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .results, .error {
+      margin-top: 20px;
+    }
+    .results ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .results li {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .pagination button {
+      padding: 5px 10px;
+    }
+    @media (max-width: 600px) {
+      input, select, button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Movie Hub</h1>
+    <form id="searchForm">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" placeholder="Enter movie title (min 3 characters)" required>
+      </div>
+      <div class="form-group">
+        <label for="type">Type</label>
+        <select id="type">
+          <option value="">All</option>
+          <option value="movie">Movie</option>
+          <option value="series">Series</option>
+          <option value="episode">Episode</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="year">Year</label>
+        <input type="number" id="year" placeholder="Enter release year">
+      </div>
+      <button type="submit">Search</button>
+    </form>
+    <div class="error" id="error"></div>
+    <div class="results" id="results"></div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+
+  <script>
+    const API_KEY = 'Movie API Key';
+    const BASE_URL = 'http://www.omdbapi.com/';
+    const form = document.getElementById('searchForm');
+    const resultsDiv = document.getElementById('results');
+    const errorDiv = document.getElementById('error');
+    const paginationDiv = document.getElementById('pagination');
+
+    let currentPage = 1;
+    let totalPages = 1;
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const title = document.getElementById('title').value.trim();
+      const type = document.getElementById('type').value;
+      const year = document.getElementById('year').value;
+
+      if (title.length < 3) {
+        displayError('Title must be at least 3 characters long.');
+        return;
+      }
+
+      currentPage = 1;
+      await fetchMovies(title, type, year, currentPage);
+    });
+
+    async function fetchMovies(title, type, year, page) {
+      const url = `${BASE_URL}?apikey=${API_KEY}&s=${title}&type=${type}&y=${year}&page=${page}`;
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.Response === 'False') {
+          displayError(data.Error);
+        } else {
+          displayResults(data.Search, data.totalResults);
+          totalPages = Math.ceil(data.totalResults / 10);
+          setupPagination(title, type, year);
+        }
+      } catch (error) {
+        displayError('Something went wrong. Please try again later.');
+      }
+    }
+
+    function displayResults(movies, totalResults) {
+      errorDiv.textContent = '';
+      resultsDiv.innerHTML = `
+        <p>Found ${totalResults} results:</p>
+        <ul>
+          ${movies.map(movie => `
+            <li>
+              <strong>${movie.Title}</strong> (${movie.Year}) [${movie.Type}]
+            </li>
+          `).join('')}
+        </ul>
+      `;
+    }
+
+    function displayError(message) {
+      resultsDiv.innerHTML = '';
+      paginationDiv.innerHTML = '';
+      errorDiv.textContent = message;
+    }
+
+    function setupPagination(title, type, year) {
+      paginationDiv.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.addEventListener('click', () => fetchMovies(title, type, year, i));
+        paginationDiv.appendChild(button);
+      }
+    }
+  </script>
+</body>
+</html>
